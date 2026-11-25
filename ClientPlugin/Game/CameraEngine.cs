@@ -57,6 +57,7 @@ internal static class CameraEngine
     private static float turretFovDegrees;
     private static float turretNormalFovDegrees;
     private static bool turretBarrelViewSetting;
+    private static bool turretReleaseRequested;
 
     /// <summary>Mouse aim multiplier for the turret while zoomed (1 = not zoomed). Read by TurretAimPatch.</summary>
     public static float TurretAimSensitivity { get; private set; } = 1f;
@@ -89,7 +90,7 @@ internal static class CameraEngine
             }
             if (turretBlock != null && turretControl != null)
             {
-                turretControl.RequestReleaseControl(); // same as the game's release key (F)
+                ReleaseTurret();
                 return true;
             }
         }
@@ -338,6 +339,17 @@ internal static class CameraEngine
 
         if (turretBlock == null) EnterTurret(state);
 
+        // In turret control Esc did not reach the game's menu hotkey in testing (no EscapePatch call), so read it here too.
+        if (Input.Escape && turretControl != null)
+        {
+            ReleaseTurret();
+            return;
+        }
+
+        // Right mouse button reloads, as with manually controlled weapons. The game's own reload key keeps working.
+        if (Input.RightClick && turretControl != null)
+            turretControl.RequestReload();
+
         // Zoom works in the barrel view and in the game's own turret view.
         if (Input.WheelNotches != 0 && config.WheelZoom)
         {
@@ -362,6 +374,7 @@ internal static class CameraEngine
         var config = Config.Current;
         turretBlock = state.ControlledBlock;
         turretControl = state.TurretControl;
+        turretReleaseRequested = false;
         turretRenderCamera = state.Camera;
         turretBarrelViewSetting = config.BarrelView;
         turretNormalFovDegrees = Math.Max(Zoom.ToDegrees(state.Camera.FieldOfView), Zoom.MaxZoomDegrees);
@@ -388,6 +401,15 @@ internal static class CameraEngine
         turretRenderCamera.SetNextTransitionNonSmooth();
         PluginLog.Info($"Turret camera on: {barrelView.Name} (game camera point: {(barrelView.HasGameCameraPoint ? "yes" : "no")}, " +
                        $"definition: {barrelView.DefinitionName}, view moved right/up: {barrelView.ViewShift.X} m / {barrelView.ViewShift.Y} m)");
+    }
+
+    /// <summary>Esc during turret control: the same request as the game's release key (F), once per turret.</summary>
+    private static void ReleaseTurret()
+    {
+        if (turretReleaseRequested) return;
+        turretReleaseRequested = true;
+        turretControl.RequestReleaseControl();
+        PluginLog.Info("Esc: turret control released");
     }
 
     private static void ApplyTurretFov()

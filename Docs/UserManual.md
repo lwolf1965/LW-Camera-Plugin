@@ -85,6 +85,7 @@ the turret's barrel and looks where it aims:
 - **Limits:** the turret turns all the way round, but up and down only within its limits (Gatling turret −40° to
   +90°). The view follows the barrel, so it stops at the same limits.
 - **Mouse wheel** zooms. Aiming gets finer as you zoom in.
+- **Right mouse button** reloads.
 - **Releasing control** (the game's release key, F) brings your normal view back. **Esc** releases the turret too,
   instead of opening the game menu; a second Esc opens the menu.
 - **Gatling turret:** the view sits 0.3 m left of and above the game's own camera point, so the barrel does not

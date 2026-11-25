@@ -11,7 +11,7 @@
 
     <Author>LoneWolf2K</Author>
 
-    <Tooltip>Dock camera: look out of your ship's connector from the cockpit while docking, with mouse-wheel zoom. Turret camera: control a turret and look from its barrel.</Tooltip>
+    <Tooltip>Dock camera at your connectors and a barrel view for turrets, with mouse-wheel zoom.</Tooltip>
 
     <Description>A dock camera, until SE2 gets a camera block.
 
