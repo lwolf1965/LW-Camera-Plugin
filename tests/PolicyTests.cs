@@ -8,7 +8,6 @@ public static class CameraTagTests
     public static void PlainTag()
     {
         Assert.True(CameraTags.TryParse("Connector [CAM]", out var tag));
-        Assert.Equal<float?>(null, tag.Offset);
         Assert.Equal("Connector", tag.Label);
     }
 
@@ -20,19 +19,11 @@ public static class CameraTagTests
         Assert.Equal("Front left", tag.Label);
     }
 
-    public static void Offset()
+    public static void ExtraWordsAreNotTags()
     {
-        Assert.True(CameraTags.TryParse("Nose [CAM 2]", out var tag));
-        Assert.Equal<float?>(2f, tag.Offset);
-
-        Assert.True(CameraTags.TryParse("X [CAM 0,5]", out tag), "comma decimal");
-        Assert.Equal<float?>(0.5f, tag.Offset);
-    }
-
-    public static void DirectionWordsAreNotTags()
-    {
-        // The direction words were removed: the view always looks straight out of the connector.
+        // No direction words and no offset numbers: the camera always sits just in front of the connector's face.
         Assert.False(CameraTags.TryParse("Dock [CAM Down]", out _));
+        Assert.False(CameraTags.TryParse("Nose [CAM 2]", out _));
         Assert.False(CameraTags.TryParse("Dock [CAM back 1.5]", out _));
     }
 
@@ -50,16 +41,10 @@ public static class CameraTagTests
     public static void SkipsOtherTagsFirst()
     {
         // Cargo Manager tags on the same block must not hide the camera tag.
-        Assert.True(CameraTags.TryParse("Connector [Unload] [CAM 1]", out var tag));
-        Assert.Equal<float?>(1f, tag.Offset);
+        Assert.True(CameraTags.TryParse("Connector [Unload] [CAM]", out var tag));
         Assert.Equal("Connector [Unload]", tag.Label);
     }
 
-    public static void OffsetIsClamped()
-    {
-        Assert.True(CameraTags.TryParse("x [CAM 999]", out var tag));
-        Assert.Equal<float?>(50f, tag.Offset);
-    }
 }
 
 public static class ZoomTests

@@ -105,7 +105,7 @@ internal sealed class TurretCamera
     }
 
     /// <summary>World pose of the barrel view, or false when the turret is gone.</summary>
-    public bool TryGetPose(float fallbackOffset, out WorldTransform pose)
+    public bool TryGetPose(out WorldTransform pose)
     {
         pose = WorldTransform.Identity;
         if (!IsAlive) return false;
@@ -129,7 +129,7 @@ internal sealed class TurretCamera
             }
             else
             {
-                position = barrelWorld.Translation + forward * fallbackOffset;
+                position = barrelWorld.Translation + forward * CameraPoint.FaceOffset;
             }
 
             var rotation = MatrixD.CreateWorld(in position, in forward, in up);

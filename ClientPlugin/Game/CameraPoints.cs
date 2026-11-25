@@ -21,7 +21,9 @@ internal sealed class CameraPoint
     public ConnectorComponent Connector;
 
     public string Name;
-    public float Offset;
+
+    /// <summary>Metres in front of the connector's face: just clear of the connector model.</summary>
+    public const float FaceOffset = 0.1f;
 
     /// <summary>World direction of the top of the screen from the last pose.</summary>
     public Vector3D LastScreenUp;
@@ -40,7 +42,7 @@ internal sealed class CameraPoint
     }
 
     /// <summary>
-    /// World pose of the camera: the connector's pivot (the centre of its connecting face), moved Offset metres
+    /// World pose of the camera: the connector's pivot (the centre of its connecting face), moved FaceOffset metres
     /// out of the connector and looking straight out of it.
     /// The top of the screen follows the cockpit, not the connector: a connector looks the same in every rotation
     /// around its axis, so its own "up" would roll or flip the image and the controls would not match the screen.
@@ -66,7 +68,7 @@ internal sealed class CameraPoint
             }
             LastScreenUp = up;
             LastForward = forward;
-            var position = m.Translation + forward * Offset;
+            var position = m.Translation + forward * FaceOffset;
             var rotation = MatrixD.CreateWorld(position, forward, up);
             pose = new WorldTransform(position, Quaternion.CreateFromRotationMatrix(in rotation));
             return true;
@@ -110,7 +112,7 @@ internal sealed class CameraPoint
 
 /// <summary>
 /// Finds the dock cameras of a grid: its connectors. Other blocks are not cameras, tagged or not.
-/// A [CAM ...] tag on a connector is optional: it sets the name and offset, and with
+/// A [CAM] tag on a connector is optional: it names the camera, and with
 /// "All connectors are cameras" off it is what makes the connector a camera.
 ///
 /// Game API:
@@ -146,7 +148,6 @@ internal static class CameraPoints
                 Block = entity,
                 Connector = connector,
                 Name = tagged && tag.Label.Length > 0 ? tag.Label : (name.Length > 0 ? name : "Connector"),
-                Offset = tagged && tag.Offset.HasValue ? tag.Offset.Value : config.CameraOffset,
             });
         }
 

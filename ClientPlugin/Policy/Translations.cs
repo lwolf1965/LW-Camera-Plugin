@@ -240,28 +240,6 @@ public static class Translations
             "开启：飞船的每个连接器都是对接摄像机，无需标签。关闭：仅名称中带 [CAM] 的连接器",
             "開啟：飛船的每個連接器都是對接攝影機，無需標籤。關閉：僅名稱中帶 [CAM] 的連接器",
         },
-        ["Camera offset (m)"] = new[]
-        {
-            "Odsazení kamery (m)", "Kamera-Abstand (m)", "Desplazamiento de la cámara (m)", "Décalage de la caméra (m)",
-            "Distanza della telecamera (m)", "カメラの距離（m）", "카메라 거리 (m)", "Odsunięcie kamery (m)",
-            "Distância da câmera (m)", "Смещение камеры (м)", "Kamera uzaklığı (m)", "摄像机偏移（米）", "攝影機偏移（公尺）",
-        },
-        ["How far in front of the connector's face the camera sits. A number in the tag overrides it: [CAM 2]"] = new[]
-        {
-            "Jak daleko před čelem konektoru kamera je. Číslo ve štítku to přepíše: [CAM 2]",
-            "Wie weit vor der Verbinderfläche die Kamera sitzt. Eine Zahl im Tag überschreibt das: [CAM 2]",
-            "A qué distancia delante de la cara del conector está la cámara. Un número en la etiqueta lo cambia: [CAM 2]",
-            "Distance de la caméra devant la face du connecteur. Un nombre dans le tag la remplace : [CAM 2]",
-            "Quanto davanti alla faccia del connettore si trova la telecamera. Un numero nel tag la sostituisce: [CAM 2]",
-            "コネクターの接続面からカメラまでの距離。タグ内の数値が優先されます：[CAM 2]",
-            "커넥터 면 앞에 카메라가 놓이는 거리입니다. 태그의 숫자가 우선합니다: [CAM 2]",
-            "Jak daleko przed czołem konektora jest kamera. Liczba w tagu to zmienia: [CAM 2]",
-            "A que distância à frente da face do conector fica a câmera. Um número na tag substitui: [CAM 2]",
-            "Насколько впереди торца коннектора стоит камера. Число в теге заменяет его: [CAM 2]",
-            "Kameranın bağlayıcı yüzünün ne kadar önünde durduğu. Etiketteki sayı bunu geçersiz kılar: [CAM 2]",
-            "摄像机位于连接器端面前方的距离。标签中的数字优先：[CAM 2]",
-            "攝影機位於連接器端面前方的距離。標籤中的數字優先：[CAM 2]",
-        },
         ["Controls follow dock camera"] = new[]
         {
             "Ovládání podle dokovací kamery", "Steuerung folgt der Andockkamera", "Los controles siguen la cámara de atraque",

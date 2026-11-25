@@ -9,8 +9,8 @@ Only the latest version is supported.
 - It runs inside the game as a Pulsar plugin, compiled from this source on your machine.
 - It is client side only: it changes the view, nothing in the world.
 - It makes **no network connections**.
-- It reads and writes only its own settings file and, when you ask for it, the weapon report (`weapons.txt`
-  in the plugin's data folder). Its messages go to the game log.
+- It reads and writes only its own settings file (`Config.xml` in the plugin's data folder). Its messages go to
+  the game log.
 
 A change that breaks any of these points is a security problem. Please report it.
 

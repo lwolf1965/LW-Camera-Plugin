@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 
 namespace ClientPlugin.Policy;
 
@@ -8,17 +7,13 @@ public sealed class CameraTag
 {
     /// <summary>Block name without the tag, trimmed. Shown as the camera name.</summary>
     public string Label = "";
-
-    /// <summary>Metres in front of the connector's face. Null = use the default.</summary>
-    public float? Offset;
 }
 
 /// <summary>
 /// Parses camera name tags. Pure logic, no game types (compiled into tests/).
 ///
-/// Formats (case-insensitive, anywhere in the block name):
-///   [CAM]                  default offset
-///   [CAM 2]                camera 2 m in front of the connector's face
+/// Format: [CAM], case-insensitive, anywhere in the block name. Anything else in the bracket ([CAMERA], [CAM 2],
+/// [Cam stuff]) is not our tag.
 /// </summary>
 public static class CameraTags
 {
@@ -50,20 +45,7 @@ public static class CameraTags
 
     private static bool TryParseInner(string inner, out CameraTag tag)
     {
-        tag = null;
-        var parts = inner.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-        if (parts.Length == 0 || !parts[0].Equals(Keyword, StringComparison.OrdinalIgnoreCase)) return false;
-
-        var result = new CameraTag();
-        for (var i = 1; i < parts.Length; i++)
-        {
-            var part = parts[i];
-            if (float.TryParse(part.Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture, out var offset))
-                result.Offset = Math.Clamp(offset, -50f, 50f);
-            else
-                return false; // unknown word: not our tag (e.g. [CAMERA] or [Cam stuff])
-        }
-        tag = result;
-        return true;
+        tag = inner.Equals(Keyword, StringComparison.OrdinalIgnoreCase) ? new CameraTag() : null;
+        return tag != null;
     }
 }

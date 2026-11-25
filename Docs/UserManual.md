@@ -59,15 +59,8 @@ The dock camera ends by itself when you leave the cockpit, take control of somet
 destroyed.
 While a screen with a mouse cursor is open (terminal, inventory, menus), the plugin's keys and the wheel zoom are off.
 
-**Optional tag.** Put `[CAM]` in a connector's name to adjust its camera. The text before or after the tag is the
-camera's name.
-
-| Name | Camera |
-|---|---|
-| `Dock port [CAM]` | Default view, named "Dock port" |
-| `Dock port [CAM 2]` | 2 m in front of the face (−50 to 50) |
-
-The camera always looks straight out of the connector.
+**Optional tag.** Put `[CAM]` in a connector's name to name its camera: `Dock port [CAM]` is the camera "Dock port".
+The camera always sits just in front of the connector's face and looks straight out of it.
 
 Tags are not case-sensitive and work next to other tags, for example LW Cargo Manager's: `Dock [Unload] [CAM]`.
 A tag on a block that is not a connector does nothing.
@@ -114,7 +107,6 @@ Traditional Chinese).
 | Barrel view | on | Off: the game's own turret view; the wheel still zooms |
 | All turrets | on | Off: only turrets with `[CAM]` |
 | All connectors are cameras | on | Off: only connectors with `[CAM]` |
-| Camera offset (m) | 0.1 | Distance in front of the connector's face |
 | Controls follow dock camera | on | W A S D C Space and the mouse work in the camera's directions |
 | Verbose log | off | Writes the camera list and camera switching to the game log |
 
@@ -158,6 +150,5 @@ versions, so the numbers can change with game updates.
 
 - **Nothing happens on Alt+Home:** you must sit in a cockpit, and the ship needs a connector (with `[CAM]` in its name
   if "All connectors are cameras" is off). The game log says "No connectors on this grid" otherwise.
-- **I see part of the connector:** raise the offset: `[CAM 1]`, or the "Camera offset" setting.
 - **Something went wrong:** search the game log for `[LwCameraPlugin]`. After repeated errors the plugin stops
   itself; it starts again when you load a world.

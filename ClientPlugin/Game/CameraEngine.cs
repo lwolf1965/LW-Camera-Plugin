@@ -307,7 +307,7 @@ internal static class CameraEngine
         for (var i = 0; i < dockPoints.Count; i++)
         {
             var p = dockPoints[i];
-            PluginLog.Info($"  #{i + 1} {p.Name} offset={p.Offset}");
+            PluginLog.Info($"  #{i + 1} {p.Name}");
         }
     }
 
@@ -359,7 +359,7 @@ internal static class CameraEngine
 
         if (barrelView == null) return; // game's own view, zoom only
 
-        if (barrelView.TryGetPose(config.CameraOffset, out var pose))
+        if (barrelView.TryGetPose(out var pose))
             turretRenderCamera.SetTransformOverride(pose);
         else
             ExitTurret("turret destroyed");

@@ -22,7 +22,7 @@ A client plugin for [Pulsar](https://github.com/SpaceGT/Pulsar). Client side onl
 | **Controls follow the camera** | In the dock camera W flies where the camera looks and the screen's up is the ship's up, for a connector on any side. |
 | **Mouse-wheel zoom** | 80° down to 6°, like the SE1 camera block. |
 | **Turret camera** | Take control of a turret and your view is on its barrel: the mouse aims, the wheel zooms, the turret's angle limits apply. Free aiming exists only on turrets. |
-| **Optional tag** | `[CAM]` in a connector's name names its camera; `[CAM 2]` moves it 2 m out. |
+| **Optional tag** | `[CAM]` in a connector's name names its camera. |
 | **Turret ranges** | Auto-aim range, ammo range and spread of the game's weapons. See [Turret range and accuracy](Docs/UserManual.md#4-turret-range-and-accuracy). |
 | **13 languages** | The settings follow the game's language. |
 | **Safe** | Uses the game's own camera override. Leaving the cockpit, switching grid or a destroyed connector returns the normal view. |

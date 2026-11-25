@@ -33,7 +33,6 @@ public class Config : INotifyPropertyChanged
     private bool allTurrets = true;
 
     private bool allConnectors = true;
-    private float cameraOffset = 0.1f;
     private bool controlsFollowCamera = true;
 
     #endregion
@@ -83,9 +82,6 @@ public class Config : INotifyPropertyChanged
 
     [Checkbox(label: "All connectors are cameras", description: "On: every connector of the ship is a dock camera, no tag needed. Off: only connectors with [CAM] in the name")]
     public bool AllConnectors { get => allConnectors; set => SetField(ref allConnectors, value); }
-
-    [Slider(0, 5, 0.1, SliderAttribute.SliderType.Float, label: "Camera offset (m)", description: "How far in front of the connector's face the camera sits. A number in the tag overrides it: [CAM 2]")]
-    public float CameraOffset { get => cameraOffset; set => SetField(ref cameraOffset, value); }
 
     [Checkbox(label: "Controls follow dock camera", description: "On: in the dock camera W flies where the camera looks, A D C Space move left, right, down, up on the screen, the mouse turns around the camera. Off: controls stay as in the cockpit")]
     public bool ControlsFollowCamera { get => controlsFollowCamera; set => SetField(ref controlsFollowCamera, value); }

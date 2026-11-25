@@ -28,7 +28,7 @@ Rules the code follows:
 - **Every path that turns the camera view on has a path that gives the view back** (`CameraEngine.Exit`).
 - **Client side only:** never change the world (block names, settings, ownership).
 - **Never commit decompiled game code.**
-- **No network access.** Files: only the plugin's settings and the weapon report.
+- **No network access.** Files: only the plugin's settings (`Config.xml`).
 
 Before you open the pull request:
 
