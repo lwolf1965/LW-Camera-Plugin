@@ -33,7 +33,7 @@ Bugs and ideas: https://github.com/lwolf1965/LW-Camera-Plugin/issues</Descriptio
     <!-- Shown in the Pulsar plugin list -->
     <Hidden>false</Hidden>
 
-    <!-- Commit hash of the released version. Fill in after the first push. -->
-    <Commit>0000000000000000000000000000000000000000</Commit>
+    <!-- Commit hash of the released version (full 40 characters) -->
+    <Commit>399a8ebb434af2cd191bc7328dcca88e8e92f834</Commit>
 
 </PluginData>

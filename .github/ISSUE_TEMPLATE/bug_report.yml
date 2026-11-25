@@ -6,7 +6,7 @@ body:
     id: version
     attributes:
       label: Plugin version
-      description: Shown in the Pulsar plugin list and in the game log ("Loaded LwCameraPlugina ...").
+      description: Shown in the Pulsar plugin list and in the game log ("Loaded LwCameraPlugin ...").
       placeholder: 0.1.0.0
     validations:
       required: true

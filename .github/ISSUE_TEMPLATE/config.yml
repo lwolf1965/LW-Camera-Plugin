@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
   - name: User Manual
-    url: https://github.com/lwolf1965/LW-Docking-Camera/blob/main/Docs/UserManual.md
+    url: https://github.com/lwolf1965/LW-Camera-Plugin/blob/main/Docs/UserManual.md
     about: Setup, keys and tags. Check here first when something does not work as expected.
