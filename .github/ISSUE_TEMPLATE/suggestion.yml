@@ -1,5 +1,5 @@
 name: Suggestion
-description: An idea for LW Docking Camera
+description: An idea for LW Camera Plugin
 labels: ["enhancement"]
 body:
   - type: markdown

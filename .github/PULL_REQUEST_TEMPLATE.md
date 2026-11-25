@@ -15,5 +15,5 @@
 - [ ] Every way into the camera view has a way back to the normal view
 - [ ] Nothing in the world is changed (client side only)
 - [ ] No network access was added, and no decompiled game code
-- [ ] Version number and `LwDockingCamera.xml` are unchanged
+- [ ] Version number and `LwCameraPlugin.xml` are unchanged
 - [ ] `Docs/UserManual.md` is updated if players see the change
